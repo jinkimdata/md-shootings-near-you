@@ -1,0 +1,324 @@
+@import "mixins"
+@import "variables"
+@import "bourbon/bourbon"
+@import "neat/neat"
+@import "normalize"
+@import "fonts"
+
+/* General Styles */
+
+// body
+.container
+	.mapContainer
+		width: 100%
+		// @include aspect-ratio(16,9,#homicideMap)
+		p 
+			font-family: $lato
+			font-size: 16px
+			margin: 0
+			@media (max-width: $sm1)
+				font-size: 14px
+		.overlay
+			width: 100%
+			height: 100%
+			position: absolute
+			top: 0
+			left: 0
+			padding-right: 240px			
+			background-color: rgba(0,0,0,.8)
+			z-index: 999
+			@media (max-width: $sm1)
+				padding: 0
+			.overlayTextContainer
+				position: absolute
+				top: 200px
+				padding-right: 230px
+				@media (max-width: $sm1)
+					top: 50px
+					padding: 0
+				.overlayHeadline
+					margin: 10px 0
+					padding: 10px
+					font-size: 63px
+					background-color: $goldenrod
+					&--1
+						float: left
+					&--2
+						float: right
+					@media (max-width: $md1)
+						font-size: 48px
+					@media (max-width: $md2)
+						font-size: 36px
+					@media (max-width: $sm1)
+						font-size: 24px
+						margin: 5px 0
+						padding: 5px
+						&--2
+							float: left
+				// .overlaySubhead
+				// 	font-size: 30px
+				// 	float: left
+				// 	color: $goldenrod
+				// 	clear: both
+				// 	margin: 0
+				// 	font-style: italic
+
+			.arrowsContainer
+				display: inline-block
+				float: right
+				.arrow
+					margin-top: 11px
+					background-color: rgba(0,0,0,.5)
+					padding: 5px
+					text-align: right
+					&:last-child
+						text-align: center
+					p
+						display: inline-block
+						font-family: $lato
+						color: white
+						text-transform: uppercase
+					img
+						height: 12px
+						margin-left: 5px
+				@media (max-width: $sm1)
+					display: none
+		#homicideMap.cartodbMap
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			height: 100%
+		.mapHUD
+			width: 230px
+			height: 100%
+			min-height: 490px
+			position: absolute
+			top: 0
+			right: 0
+			padding: 11px
+			background-color: rgba(30,30,30,.75)
+			// background-color: $nearblack
+			text-align: center
+			@media (max-width: $sm1)
+				width: 100%
+				height: auto
+				min-height: 0
+				bottom: 0		
+				top: auto	
+				padding: 0	
+				background-color: rgba(30,30,30,.75)
+			.mapButtonsContainer
+				margin-top: 41px
+				margin-bottom: 11px
+				border-bottom: 1px dotted $gray
+				@media (max-width: $sm1)
+					margin: 0
+					border: 0
+					+clearfix
+				.mobileDirections
+					display: none
+					@media (max-width: $sm1)
+						position: relative
+						display: block
+						width: 80%
+						margin: 2px auto 0 auto
+						z-index: 1000
+					p
+						color: white
+						font-weight: bold
+						text-transform: uppercase
+				.mapButton
+					position: relative
+					width: 208px
+					margin: 11px auto
+					padding: 5px
+					background-color: white
+					z-index: 1000
+					p
+						color: $gray
+						text-align: center
+						text-transform: uppercase
+					&--nearby
+						p
+							color: black
+					&--full
+						p
+							color: black
+					@media (max-width: $sm1)
+						display: inline-block
+						width: 49%
+						margin: 5px auto
+						&--nearby
+							float: left
+						&--full
+							float: right
+				*
+					cursor: pointer
+					&:hover
+						background-color: $gray
+			.mapStatsContainer					
+				background-color: white	
+				padding: 5px
+				@media (max-width: $sm1)
+					+clearfix
+				.mapStatItem
+					&__numbers
+						p
+							margin: 5px 0
+							font-weight: bold
+							text-transform: uppercase
+							span.homicidesNumber
+							span.shootingsNumber
+							&.numbersIntro
+								margin-top: 10px
+							&.homicidesNumberWrap, &.shootingsNumberWrap
+								color: white
+								padding: 8px
+							&.homicidesNumberWrap
+								background-color: $burgundy
+							&.shootingsNumberWrap
+								background-color: $goldenrod
+							@media (max-width: $sm1)
+								&.numbersIntro
+									margin-top: 0
+									.withinMile br
+										display: none
+								&.homicidesNumberWrap, &.shootingsNumberWrap
+									display: inline-block
+									width: 49%
+									padding: 4px
+								&.homicidesNumberWrap
+									float: left
+								&.shootingsNumberWrap
+									float: right
+			.share-tools
+				// height: 100%
+				margin: 10px
+				font-size: 24px
+				vertical-align: middle
+				color: $goldenrod
+				text-align: center
+				p
+					text-transform: uppercase
+					font-weight: bold
+					@media (max-width: $sm1)
+						display: inline-block
+						margin-right: 10px
+				span
+					cursor: pointer
+					vertical-align: middle
+					margin: 10px
+					&:hover
+						color: $burgundy
+				@media (max-width: $sm1)
+					font-size: 26px
+			.infoboxContainer
+				margin-top: 11px
+				color: white
+				@media (max-width: $sm1)
+					display: none
+				.infobox
+					color: black
+					margin: 10px 0
+					p
+						padding: 1px 0
+					.cartodb-infobox
+						padding: 10px
+						height: 100%
+						background: white
+						text-align: left
+						z-index: 105
+					&--homicides
+						p:first-child
+							color: $burgundy
+					&--shootings
+						p:first-child
+							color: $goldenrod
+			.mobileFooter
+				display: none
+				@media (max-width: $sm1)
+					display: block
+					background-color: $nearblack
+					color: white
+					padding: 3px 0
+					font-size: 12px
+					font-family: $lato
+					cursor: pointer
+		footer
+			position: absolute
+			bottom: 7px
+			right: 0
+			width: 219px
+			text-align: left
+			.wrapper
+				p
+					font-size: 12px
+					font-family: $lato
+					color: white
+					a
+						text-decoration: none
+						color: $goldenrod
+			@media (max-width: $sm1) 
+				display: none
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background-color: rgba(30,30,30,.75)
+				.wrapper
+					position: absolute
+					top: 30%
+					width: 100%
+					margin: 0 auto
+					text-align: center
+// /* Tophat */
+
+// #tophat
+// 	height: 40px
+// 	background-color: $nearblack
+// 	overflow: hidden
+
+// #logo
+// 	width: 250px
+// 	height: 100%
+// 	float: left
+// 	line-height: 43px
+// 	vertical-align: middle
+// 	img
+// 		margin: 0 10px
+// 		width: 90%
+// 	@media (max-width: 400px)
+// 		width: 200px
+
+// .tophat-share-tools
+// 	float: right
+// 	height: 100%
+// 	line-height: 35px
+// 	font-size: 24px
+// 	vertical-align: middle
+// 	color: $tophat-social
+// 	margin: 0 10px
+// 	text-align: center
+// 	span
+// 		cursor: pointer
+// 		vertical-align: middle
+// 		margin-right: 8px
+// 		&:hover
+// 			color: $tophat-social--hover
+// 	@media (max-width: 760px)
+// 		font-size: 18px
+// 		line-height: 40px
+
+
+// /* Leaderboard */
+
+// #leaderboard
+// 	width: 728px 
+// 	height: 90px
+// 	background-color: #222222
+// 	margin: 10px auto
+// 	text-align: center
+// 	@media (max-width: 730px)
+// 		display: none
