@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--if lt IE 7<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+-->
+<!--if IE 7<html class="no-js lt-ie9 lt-ie8">
+-->
+<!--if IE 8
+<html class="no-js lt-ie9">
+
+-->
+<html lang="en" class="no-js">
+  <head>
+    <!--Basic page needs-->
+    <meta charset="utf-8">
+    <title>How violent is your neighborhood?</title>
+    <meta name="description" content="Shootings and homicides in Maryland">
+    <meta name="author" content="Jin Bae Kim">
+    <!--Mobile Specific Metas-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--CSS-->
+    <link rel="stylesheet" href="css/cartodb.css">
+    <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--Fonts-->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat">
+    <!--Facebook Stuff-->
+    <meta property="og:title" content="How violent is your neighborhood?">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="images/thumb.png">
+    <meta property="og:site_name" content="The Baltimore Sun">
+    <meta property="og:description" content="Shootings and homicides in Maryland">
+    <meta property="fb:app_id" content="310302989040998">
+    <!--Twitter Stuff-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@baltimoresun">
+    <meta name="twitter:creator" content="@baltsundata">
+    <meta name="twitter:title" content="How violent is your neighborhood?">
+    <meta name="twitter:description" content="Shootings and homicides in Maryland">
+    <meta name="twitter:image" content="images/thumb.png">
+    <meta name="twitter:domain" content="baltimoresun.com">
+  </head>
+  <body>
+    <div class="container">
+      <div class="mapContainer">
+        <div class="overlay">
+          <div class="overlayTextContainer">
+            <h2 class="overlayHeadline overlayHeadline--1">How violent is your </h2>
+            <h2 class="overlayHeadline overlayHeadline--2">neighborhood?</h2>
+          </div>
+          <div class="arrowsContainer">
+            <div class="arrow"> 
+              <p>Enter your address</p><img src="images/arrow.png" class="arrowImg">
+            </div>
+            <div class="arrow"> 
+              <p>See results near you</p><img src="images/arrow.png" class="arrowImg">
+            </div>
+            <div class="arrow"> 
+              <p>View the full map</p><img src="images/arrow.png" class="arrowImg">
+            </div>
+            <div class="arrow"> 
+              <p>Or click on the map</p>
+            </div>
+          </div>
+        </div>
+        <div id="homicideMap" class="cartodbMap"></div>
+        <div class="mapHUD">
+          <div class="mapButtonsContainer">
+            <div class="mobileDirections">
+              <p>Click and drag on the map</p>
+              <p>or use the buttons below</p>
+            </div>
+            <div class="mapButton mapButton--nearby">
+              <p>Locate me</p>
+            </div>
+            <div class="mapButton mapButton--full">
+              <p>View full map</p>
+            </div>
+          </div>
+          <div class="mapStatsContainer">
+            <div class="mapStatItem mapStatItem__numbers">
+              <p class="numbersIntro">In <span class="incidentsNumber"></span><span> incident</span><span class="incidentsPlural">s</span><span class="withinMile"><br> within one mile</span><span>:</span></p>
+              <p class="homicidesNumberWrap"><span class="homicidesNumber">0</span> killed</p>
+              <p class="shootingsNumberWrap"><span class="shootingsNumber">0</span> injured</p>
+            </div>
+          </div>
+          <div class="share-tools">
+            <p class="sharetext">Share this statistic:</p><span class="icon icon-facebook"></span><span class="icon icon-twitter"></span>
+          </div>
+          <div class="infoboxContainer">
+            <p>Hover over a point for details on the incident</p>
+            <div class="infobox infobox--homicides"></div>
+            <div class="infobox infobox--shootings"></div>
+          </div>
+          <div class="mobileFooter">About this interactive</div>
+        </div>
+        <footer>
+          <div class="wrapper">
+            <p class="inspired">Inspired by <a href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank">The Trace</a></p>
+            <p class="source">Source: 							<a href="http://www.gunviolencearchive.org/" target="_blank">Gun Violence Archive (2015)</a></p>
+            <p class="credit">Design by Emma Patti Harris</p>
+            <p class="credit">Development by Jin Bae Kim</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!--app-->
+    <script src="js/min/jquery-1.10.2.min.js"></script>
+    <script src="js/min/modernizr.js"></script>
+    <script src="js/min/cartodb.js"></script>
+    <script src="js/min/Control.OSMGeocoder.js"></script>
+    <script src="js/app.js"></script><script>
+	((((window.trb || (window.trb = {})).data || (trb.data = {})).metrics || (trb.data.metrics = {})).thirdparty = {
+		pageName: 'bs:dataproject:news:maryland:md-shootings-near-me:dataproject.',
+		channel: 'news:maryland',
+		server: 'data.baltimoresun.com',
+		hier1: 'baltimoresun:news:maryland',
+		hier2: 'news:maryland',
+		prop1: 'D=pageName',
+		prop2: 'news',
+		prop38: 'dataproject',
+		prop57: 'D=c38',
+		eVar20: 'baltimoresun',
+		eVar21: 'D=c38',
+		eVar34: 'D=ch',
+		eVar35: 'D=pageName',
+		events:''
+	});  
+</script>
+
+<script src="http://www.baltimoresun.com/thirdpartyservice?disablenav=true&disablessor=true" async></script>
+  </body>
+</html>
