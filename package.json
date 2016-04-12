@@ -11,7 +11,7 @@
     "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
     "serve": "browser-sync start --server dist 'dist/css/*.css, dist/js/*.js'",
     "build:html": "npm run jade",
-    "build:css": "npm run css",
+    "build:css": "npm run sass",
     "build:js": "npm run uglify",
     "build:images": "npm run imagemin && npm run icons",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
