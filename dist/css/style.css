@@ -517,6 +517,21 @@ th {
             padding: 5px; }
             .container .mapContainer .overlay .overlayTextContainer .overlayHeadline--2 {
               float: left; } }
+      .container .mapContainer .overlay .overlayTextContainer .overlaySubhead {
+        margin: 10px 0;
+        padding: 7px;
+        font-size: 24px;
+        font-style: italic;
+        background-color: rgba(155, 155, 155, 0.3);
+        float: right;
+        clear: both;
+        color: white; }
+        @media (max-width: 888px) {
+          .container .mapContainer .overlay .overlayTextContainer .overlaySubhead {
+            font-size: 18px; } }
+        @media (max-width: 768px) {
+          .container .mapContainer .overlay .overlayTextContainer .overlaySubhead {
+            font-size: 12px; } }
     .container .mapContainer .overlay .arrowsContainer {
       display: inline-block;
       float: right; }

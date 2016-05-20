@@ -61,11 +61,8 @@ var app = {
                 user_name: "baltsun",
                 type: "cartodb",
                 sublayers: [ {
-                    sql: "SELECT * FROM md_nonfatal_shootings_2015",
-                    cartocss: "#md_nonfatal_shootings_2015{marker-fill-opacity: 1;" + "marker-line-color: #daa520;" + "marker-line-width: 1;" + "marker-line-opacity: 1;" + "marker-placement: point;" + "marker-type: ellipse;" + "marker-width: 4;" + "marker-fill: #fff;" + "marker-allow-overlap: true;" + "[zoom>13]{marker-width: 8;}}"
-                }, {
-                    sql: "SELECT * FROM md_fatal_shootings_2015",
-                    cartocss: "#md_fatal_shootings_2015{marker-fill-opacity: 1;" + "marker-line-color: #900020;" + "marker-line-width: 1;" + "marker-line-opacity: 1;" + "marker-placement: point;" + "marker-type: ellipse;" + "marker-width: 4;" + "marker-fill: #fff;" + "marker-allow-overlap: true;" + "[zoom>13]{marker-width: 8;}}"
+                    sql: "SELECT * FROM shootings_near_you_ob_gva",
+                    cartocss: "#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;" + "marker-line-color: #daa520;" + "marker-line-width: 1;" + "marker-line-opacity: 1;" + "marker-placement: point;" + "marker-type: ellipse;" + "marker-width: 4;" + "marker-fill: #fff;" + "marker-allow-overlap: true;" + "[zoom>13]{marker-width: 8;}}" + "#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;" + "marker-line-color: #900020;" + "marker-line-width: 1;" + "marker-line-opacity: 1;" + "marker-placement: point;" + "marker-type: ellipse;" + "marker-width: 4;" + "marker-fill: #fff;" + "marker-allow-overlap: true;" + "[zoom>13]{marker-width: 8;}}"
                 } ]
             };
             mainlayers = [];
@@ -75,29 +72,15 @@ var app = {
                 for (var i = 0; i < layer.getSubLayerCount(); i++) {
                     mainlayers[i] = layer.getSubLayer(i);
                 }
-                mainlayers[1].setInteractivity("address, date, injured, killed");
-                mainlayers[0].setInteractivity("address, date, injured");
-                var homicidesTooltip = layer.leafletMap.viz.addOverlay({
-                    type: "infobox",
-                    layer: mainlayers[1],
-                    template: '<div class="homicidesInfobox">' + "<p>{{address}}</p>" + "<p>{{date}}</p>" + "<p># Injured: {{injured}}</p>" + "<p># Killed: {{killed}}</p></div>",
-                    width: 208,
-                    fields: [ {
-                        address: "address",
-                        date: "date",
-                        injured: "injured",
-                        killed: "killed"
-                    } ]
-                });
+                mainlayers[0].setInteractivity("address, date, killed");
                 var shootingsTooltip = layer.leafletMap.viz.addOverlay({
                     type: "infobox",
                     layer: mainlayers[0],
-                    template: '<div class="shootingsInfobox">' + "<p>{{address}}</p>" + "<p>{{date}}</p>" + "<p># Injured: {{injured}}</p></div>",
+                    template: '<div class="shootingsInfobox">' + "<p>{{address}}</p>" + "<p>{{date}}</p>" + "<p># Killed: {{killed}}</p></div>",
                     width: 208,
                     fields: [ {
                         address: "address",
-                        date: "date",
-                        injured: "injured"
+                        date: "date"
                     } ]
                 });
                 $(".infobox--homicides").append(homicidesTooltip.render().el);
@@ -117,7 +100,7 @@ var app = {
             var radius, marker;
             function createFullMap() {
                 clearMap();
-                countPoints("SELECT * FROM md_nonfatal_shootings_2015", "SELECT * FROM md_fatal_shootings_2015");
+                countPoints("SELECT * FROM shootings_near_you_ob_gva WHERE killed = 0", "SELECT * FROM shootings_near_you_ob_gva WHERE killed != 0");
                 var lat = 39.289156;
                 var lon = -76.58342;
                 var zoomLvl = 9;
@@ -166,8 +149,8 @@ var app = {
                     fillColor: "#DAA520",
                     fillOpacity: .5
                 }).addTo(homicideMap);
-                var shootingsSQL = "SELECT * FROM md_nonfatal_shootings_2015 WHERE ST_Distance(the_geom, ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326), true) < 1609";
-                var homicidesSQL = "SELECT * FROM md_fatal_shootings_2015 WHERE ST_Distance(the_geom, ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326), true) < 1609";
+                var shootingsSQL = "SELECT * FROM shootings_near_you_ob_gva WHERE killed = 0 AND ST_Distance(the_geom, ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326), true) < 1609";
+                var homicidesSQL = "SELECT * FROM shootings_near_you_ob_gva WHERE killed != 0 AND ST_Distance(the_geom, ST_GeomFromText('POINT(" + lon + " " + lat + ")', 4326), true) < 1609";
                 var viewLat = parseFloat(lat);
                 var viewLon = parseFloat(lon);
                 var zoomLvl = 14;
@@ -199,13 +182,11 @@ var app = {
                 var homicidesCount = 0;
                 $.getJSON("https://baltsun.cartodb.com/api/v2/sql/?q=" + shootingsSQL, function(data) {
                     $.each(data.rows, function(key, val) {
-                        shootingsCount += val.injured;
                         incidentsCount++;
                     });
                     $.getJSON("https://baltsun.cartodb.com/api/v2/sql/?q=" + homicidesSQL, function(data) {
                         $.each(data.rows, function(key, val) {
                             homicidesCount += val.killed;
-                            shootingsCount += val.injured;
                             incidentsCount++;
                         });
                         if (incidentsCount == 1) {

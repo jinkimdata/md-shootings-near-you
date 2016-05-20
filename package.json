@@ -5,34 +5,31 @@
   "main": "index.js",
   "scripts": {
     "jade": "jade  -P -p src/index.jade < src/index.jade > dist/index.html",
-    "sass": "node-sass --output-style -o dist/css src/sass",
+    "sass": "node-sass -o dist/css src/sass",
     "uglify": "mkdir -p dist/js && uglifyjs src/js/*.js -b -o dist/js/app.js && uglifyjs src/js/*.js -m -c -o dist/js/min/app.min.js",
     "imagemin": "imagemin src/images dist/images -p",
     "icons": "svgo -f src/images/icons && mkdir -p dist/images && svg-sprite-generate -d src/images/icons -o dist/images/icons.svg",
     "serve": "browser-sync start --server dist 'dist/css/*.css, dist/js/*.js'",
+    "reload": "browser-sync reload --files='dist/*'",
     "build:html": "npm run jade",
     "build:css": "npm run sass",
     "build:js": "npm run uglify",
-    "build:images": "npm run imagemin && npm run icons",
+    "build:images": "npm run imagemin",
     "build:all": "npm run build:css && npm run build:js && npm run build:images",
     "watch:html": "onchange 'src/*.jade' -- npm run build:html",
     "watch:css": "onchange 'src/sass/*.sass' -- npm run build:css",
     "watch:js": "onchange 'src/js/*.js' -- npm run build:js",
-    "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js'"
+    "watch:server": "onchange 'dist/**' -- npm run reload",
+    "watch:all": "parallelshell 'npm run serve' 'npm run watch:html' 'npm run watch:css' 'npm run watch:js' 'npm run watch:server'",
+    "jademin": "jade -p src/index.jade < src/index.jade > dist/index.html",
+    "sassmin": "node-sass --output-style compressed -o dist/css src/sass", 
+    "build:min": "npm run jademin && npm run sassmin"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jinkimdata/md-shootings-near-you.git"
   },
-  "keywords": [
-    "shootings",
-    "maryland",
-    "crime",
-    "homicides",
-    "gun",
-    "violence",
-    "archive"
-  ],
+  "keywords": [],
   "author": "Jin Bae Kim",
   "license": "ISC",
   "bugs": {
