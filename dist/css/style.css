@@ -678,7 +678,7 @@ th {
             display: none; }
         .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .homicidesNumberWrap, .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .shootingsNumberWrap {
           display: block;
-          width: 49%;
+          width: 100%;
           padding: 4px;
           margin: 0 auto; } }
     .container .mapContainer .mapHUD .share-tools {

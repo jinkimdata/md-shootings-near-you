@@ -25,15 +25,14 @@ var app = {
 			var area;
 			var stats = [];
 			stats[0] = $('.incidentsNumber').text();
-			stats[1] = $('.shootingsNumber').text();
-			stats[2] = $('.homicidesNumber').text();
+			stats[1] = $('.homicidesNumber').text();
 			if (Number(stats[0]) > 500) {
 				area = "in Maryland"
 			} else {
 				area = "in my area"
 			};
-			return "In 2015, " + stats[0] + " shootings " + area + 
-			" resulted in " + stats[1] + " injuries and " + stats[2] + " deaths.";
+			return "Since 2015, " + stats[0] + " shootings " + area + 
+			" resulted in " + stats[1] + " deaths.";
 		}
 	},
 	createMap: function() {
@@ -155,7 +154,7 @@ var app = {
 				};
 				function alertError(error) {
 					var errors = { 
-						1: 'Permission denied. Please check your location settings or input the address manually.',
+						1: 'Permission denied. Please input the address manually.',
 						2: 'Position unavailable',
 						3: 'Request timeout'
 					};
