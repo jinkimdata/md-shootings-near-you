@@ -45,7 +45,7 @@ var app = {
 			};
 			// Instantiate new map object, place it in 'map' element
 			var options = {				
-				center: [39.289156, -76.593420],
+				center: [39.118985, -76.593420],
 				zoom: 12,
 				touchZoom: true,
 				scrollWheelZoom: true,
@@ -106,17 +106,16 @@ var app = {
 						template:'<div class="shootingsInfobox">'+
 							'<p>{{address}}</p>'+
 							'<p>{{date}}</p>'+
-							'<p># Killed: {{killed}}</p></div>',
+							'<p class="killedCount"># Killed: {{killed}}</p></div>',
 						width: 208,
 						fields: [{
 							address: 'address',
 							date: 'date'
 						}]
 					});
-					$('.infobox--homicides').append(homicidesTooltip.render().el);
 					$('.infobox--shootings').append(shootingsTooltip.render().el);
-					var lat = 39.289156;
-					var lon = -76.583420;
+					var lat = 39.118985;
+					var lon = -76.375932;
 					var zoomLvl = 9;
 					if (isMobile) {
 						lat -= .02;
@@ -131,13 +130,13 @@ var app = {
 			var radius, marker;
 			function createFullMap() {				
 				clearMap();
-				// $('.numbersIntro').text('Within Maryland:');
+				$('.withinMile').text('Within Maryland:');
 				countPoints("SELECT * FROM shootings_near_you_ob_gva WHERE killed = 0","SELECT * FROM shootings_near_you_ob_gva WHERE killed != 0");
-				var lat = 39.289156;
-				var lon = -76.583420;
+				var lat = 39.118985;
+				var lon = -76.375932;
 				var zoomLvl = 9;
 				if (isMobile) {
-					lat -= .02;
+					lat -= .42;
 					lon -= .04;
 					zoomLvl -= 1;
 				}
@@ -165,7 +164,7 @@ var app = {
 			};
 			function createProximityMap(position) {
 				clearMap();
-				// $('.numbersIntro').text('Within one mile:');
+				$('.withinMile').text('Within one mile:');
 				var lon = position.coords.longitude;
 				var lat = position.coords.latitude;
 				var latlng = L.latLng(lat, lon);
@@ -188,7 +187,8 @@ var app = {
 				if (!isMobile) {
 					viewLon += .009;
 				} else {
-					viewLat -= .009;
+					$('.mobileDirections').fadeOut();
+					viewLat -= .013;
 					zoomLvl -= 1;
 				};
 				homicideMap.setView([viewLat, viewLon], zoomLvl, {animation: true});
@@ -225,11 +225,6 @@ var app = {
 						} else {
 							$('.incidentsPlural').show();
 						};
-						if (incidentsCount > 500) {
-							$('.withinMile').hide();
-						} else {
-							$('.withinMile').show();
-						};
 						$('.incidentsNumber').text(incidentsCount);
 						$('.homicidesNumber').text(homicidesCount);
 						$('.shootingsNumber').text(shootingsCount);
@@ -263,7 +258,7 @@ var app = {
 			// };
 				homicideMap.addControl(osmGeocoder);
 			$('.mapButton--nearby').on('click', function() {
-				detectUserLocation();		
+				detectUserLocation();
 			});			
 			homicideMap.on('click', function(result){
 				var newPos = {

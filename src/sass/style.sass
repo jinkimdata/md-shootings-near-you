@@ -18,6 +18,9 @@
 			margin: 0
 			@media (max-width: $sm1)
 				font-size: 14px
+		a
+			text-decoration: none
+			color: $goldenrod
 		.overlay
 			width: 100%
 			height: 100%
@@ -34,6 +37,7 @@
 				top: 200px
 				padding-right: 230px
 				@media (max-width: $sm1)
+					width: 100%
 					top: 50px
 					padding: 0
 				.overlayHeadline
@@ -61,16 +65,29 @@
 					font-size: 24px
 					font-style: italic
 					// background-color: rgba(0,0,0,.5)
-					background-color: rgba(155,155,155,.3)
+					background-color: $nearblack
 					float: right
 					clear: both
 					color: white
-					// color: $gray
+					span
+						color: $goldenrod
 					@media (max-width: $md1)
 						font-size: 18px
 					@media (max-width: $md2)
 						font-size: 12px
-
+				.disclaimer
+					padding: 7px
+					background-color: $nearblack
+					color: white
+					clear: both
+					text-align: center
+					h2
+						margin: 0
+						float: none
+						text-align: center
+					p
+						margin: 10px auto
+						max-width: 480px
 			.arrowsContainer
 				display: inline-block
 				float: right
@@ -132,7 +149,7 @@
 						display: block
 						width: 80%
 						margin: 2px auto 0 auto
-						z-index: 1000
+						// z-index: 1000
 					p
 						color: white
 						font-weight: bold
@@ -143,7 +160,7 @@
 					margin: 11px auto
 					padding: 5px
 					background-color: white
-					z-index: 1000
+					// z-index: 1000
 					p
 						color: $gray
 						text-align: center
@@ -167,43 +184,40 @@
 					&:hover
 						background-color: $gray
 			.mapStatsContainer					
-				background-color: white	
+				background-color: white
 				padding: 5px
 				@media (max-width: $sm1)
 					+clearfix
 				.mapStatItem
 					&__numbers
+						.numbersWrapper
+							background-color: $goldenrod
+							padding: 10px
 						p
-							margin: 5px 0
+							margin: 0
 							font-weight: bold
 							text-transform: uppercase
-							span.homicidesNumber
-							span.shootingsNumber
-							&.numbersIntro
-								margin-top: 10px
-							&.homicidesNumberWrap, &.shootingsNumberWrap
-								color: white
-								padding: 8px
-							&.homicidesNumberWrap
-								background-color: $burgundy
-							&.shootingsNumberWrap
-								background-color: $goldenrod
-							@media (max-width: $sm1)
-								&.numbersIntro
-									margin-top: 0
-									.withinMile br
-										display: none
-								&.homicidesNumberWrap, &.shootingsNumberWrap
-									display: inline-block
-									width: 49%
-									padding: 4px
-								&.homicidesNumberWrap
-									float: left
-								&.shootingsNumberWrap
-									float: right
+						.numbersIntro
+							margin: 10px 0
+						.homicidesNumberWrap, .shootingsNumberWrap
+							padding: 8px
+						.shootingsNumberWrap
+						.homicidesNumberWrap
+							color: white
+							background-color: $burgundy
+						@media (max-width: $sm1)
+							.numbersIntro
+								margin-top: 0
+								.withinMile br
+									display: none
+							.homicidesNumberWrap, .shootingsNumberWrap
+								display: block
+								width: 49%
+								padding: 4px
+								margin: 0 auto
 			.share-tools
 				// height: 100%
-				margin: 10px
+				margin: 5px
 				font-size: 24px
 				vertical-align: middle
 				color: $goldenrod
@@ -221,7 +235,7 @@
 					&:hover
 						color: $burgundy
 				@media (max-width: $sm1)
-					font-size: 26px
+					font-size: 20px
 			.infoboxContainer
 				margin-top: 11px
 				color: white
@@ -232,18 +246,14 @@
 					margin: 10px 0
 					p
 						padding: 1px 0
+						&.killedCount
+							color: $burgundy
 					.cartodb-infobox
 						padding: 10px
 						height: 100%
 						background: white
 						text-align: left
 						z-index: 105
-					&--homicides
-						p:first-child
-							color: $burgundy
-					&--shootings
-						p:first-child
-							color: $goldenrod
 			.mobileFooter
 				display: none
 				@media (max-width: $sm1)
@@ -261,13 +271,11 @@
 			width: 219px
 			text-align: left
 			.wrapper
+				padding: 4px
 				p
 					font-size: 12px
 					font-family: $lato
 					color: white
-					a
-						text-decoration: none
-						color: $goldenrod
 			@media (max-width: $sm1) 
 				display: none
 				top: 0

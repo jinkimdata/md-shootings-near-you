@@ -6,8 +6,8 @@ doctype html
 //if IE 8
 	<html class="no-js lt-ie9">
 
-- var link = {"datalink": "http://data.baltimoresun.com/jin/md-shootings-near-you/"}
-- var link = {"datalink": ""}
+- var link = "http://data.baltimoresun.com/jin/md-shootings-near-you/"
+- var link = ""
 
 html(class="no-js", lang="en")
 
@@ -23,17 +23,17 @@ html(class="no-js", lang="en")
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 
 		//CSS
-		link(rel="stylesheet" href="#{link.datalink}css/cartodb.css")
-		link(rel="stylesheet" href="#{link.datalink}css/Control.OSMGeocoder.css")
-		link(rel="stylesheet", type="text/css", href="#{link.datalink}css/style.css")
+		link(rel="stylesheet" href="#{link}css/cartodb.css")
+		link(rel="stylesheet" href="#{link}css/Control.OSMGeocoder.css")
+		link(rel="stylesheet", type="text/css", href="#{link}css/style.css")
 
 		//Fonts
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 
 		//Facebook Stuff
 		meta(property="og:title", content="How violent is your neighborhood?")
-		meta(property="og:url", content="#{link.datalink}")
-		meta(property="og:image", content="#{link.datalink}images/thumb.png")
+		meta(property="og:url", content="#{link}")
+		meta(property="og:image", content="#{link}images/thumb.png")
 		meta(property="og:site_name", content="The Baltimore Sun")
 		meta(property="og:description", content="Shootings and homicides in Maryland")
 		meta(property="fb:app_id", content="310302989040998")
@@ -44,7 +44,7 @@ html(class="no-js", lang="en")
 		meta(name="twitter:creator", content="@baltsundata")
 		meta(name="twitter:title", content="How violent is your neighborhood?")
 		meta(name="twitter:description", content="Shootings and homicides in Maryland")
-		meta(name="twitter:image", content="#{link.datalink}images/thumb.png")
+		meta(name="twitter:image", content="#{link}images/thumb.png")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
 	body
@@ -52,7 +52,7 @@ html(class="no-js", lang="en")
 			.group
 			#logo
 				a(href="http://www.baltimoresun.com")
-					img(src="#{link.datalink}images/baltimore-sun-logo-white.png" border="0")
+					img(src="#{link}images/baltimore-sun-logo-white.png" border="0")
 			.tophat-share-tools
 				span.icon-facebook
 				span.icon-twitter
@@ -62,17 +62,27 @@ html(class="no-js", lang="en")
 					.overlayTextContainer
 						h2.overlayHeadline.overlayHeadline--1 How violent is your 
 						h2.overlayHeadline.overlayHeadline--2 neighborhood?
-						h2.overlaySubhead Data from 2015 - current. Last updated 01/01/16.
+						h2.overlaySubhead Data from 
+							span 2015 - current
+							| . Last updated 05/14/16.
+						.disclaimer
+							h2 About the data
+							p Baltimore data is sourced from 
+								a(href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij") Open Baltimore 
+								| and specifically includes victim-based reports on shootings.
+							p Maryland-wide data is sourced from 
+								a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
+								| and includes instances in which a gun was fired, including self-defense, suicide, etc.
 					.arrowsContainer
 						.arrow 
 							p Enter your address
-							img.arrowImg(src="#{link.datalink}images/arrow.png")
+							img.arrowImg(src="#{link}images/arrow.png")
 						.arrow 
 							p See results near you
-							img.arrowImg(src="#{link.datalink}images/arrow.png")
+							img.arrowImg(src="#{link}images/arrow.png")
 						.arrow 
 							p View the full map
-							img.arrowImg(src="#{link.datalink}images/arrow.png")
+							img.arrowImg(src="#{link}images/arrow.png")
 						.arrow 
 							p Or click on the map
 				#homicideMap.cartodbMap
@@ -87,13 +97,15 @@ html(class="no-js", lang="en")
 							p View full map
 					.mapStatsContainer
 						.mapStatItem.mapStatItem__numbers
-							p.numbersIntro In 
-								span.incidentsNumber
-								span  shooting
-								span.incidentsPlural s
-								span.withinMile <br> within one mile
-								span :
-							p.homicidesNumberWrap #[span.homicidesNumber 0] killed
+							p.numbersIntro 
+								span.withinMile within one mile 
+								br
+							.numbersWrapper
+								p.shootingsNumberWrap
+									span.incidentsNumber
+									span  shooting
+									span.incidentsPlural s
+								p.homicidesNumberWrap #[span.homicidesNumber 0] dead
 					.share-tools
 						p.sharetext Share this statistic:
 						span.icon.icon-facebook
@@ -107,17 +119,23 @@ html(class="no-js", lang="en")
 					.wrapper
 						p.inspired Inspired by 
 							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace
-						p.source Source: 							
-							a(href="http://www.gunviolencearchive.org/" target="_blank") Gun Violence Archive
 						p.credit Design by Emma Patti Harris
 						p.credit Development by Jin Bae Kim
+						br
+						p Baltimore data is sourced from 
+							a(href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij") Open Baltimore 
+							| and specifically includes victim-based reports on shootings.
+						br
+						p Maryland-wide data is sourced from 
+							a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
+							| and includes incidents in which a gun was fired under any circumstances, including non-criminal causes.
 
 		//app
-		script(src="#{link.datalink}js/min/jquery-1.10.2.min.js")
-		//- script(src="#{link.datalink}js/min/modernizr.js")
-		script(src="#{link.datalink}js/min/cartodb.js")
-		script(src="#{link.datalink}js/min/Control.OSMGeocoder.js")
-		script(src="#{link.datalink}js/app.js")
-		//- script(src="#{link.datalink}js/min/app.min.js")
+		script(src="#{link}js/min/jquery-1.10.2.min.js")
+		//- script(src="#{link}js/min/modernizr.js")
+		script(src="#{link}js/min/cartodb.js")
+		script(src="#{link}js/min/Control.OSMGeocoder.js")
+		script(src="#{link}js/app.js")
+		//- script(src="#{link}js/min/app.min.js")
 
 		include includes/omniture.html

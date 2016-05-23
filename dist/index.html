@@ -45,7 +45,12 @@
           <div class="overlayTextContainer">
             <h2 class="overlayHeadline overlayHeadline--1">How violent is your </h2>
             <h2 class="overlayHeadline overlayHeadline--2">neighborhood?</h2>
-            <h2 class="overlaySubhead">Data from 2015 - current. Last updated 01/01/16.</h2>
+            <h2 class="overlaySubhead">Data from <span>2015 - current</span>. Last updated 05/14/16.</h2>
+            <div class="disclaimer">
+              <h2>About the data</h2>
+              <p>Baltimore data is sourced from <a href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij">Open Baltimore </a>and specifically includes victim-based reports on shootings.</p>
+              <p>Maryland-wide data is sourced from <a href="http://www.gunviolencearchive.org/">Gun Violence Archive </a>and includes instances in which a gun was fired, including self-defense, suicide, etc.</p>
+            </div>
           </div>
           <div class="arrowsContainer">
             <div class="arrow"> 
@@ -78,8 +83,11 @@
           </div>
           <div class="mapStatsContainer">
             <div class="mapStatItem mapStatItem__numbers">
-              <p class="numbersIntro">In <span class="incidentsNumber"></span><span> shooting</span><span class="incidentsPlural">s</span><span class="withinMile"><br> within one mile</span><span>:</span></p>
-              <p class="homicidesNumberWrap"><span class="homicidesNumber">0</span> killed</p>
+              <p class="numbersIntro"> <span class="withinMile">within one mile </span><br></p>
+              <div class="numbersWrapper">
+                <p class="shootingsNumberWrap"><span class="incidentsNumber"></span><span> shooting</span><span class="incidentsPlural">s</span></p>
+                <p class="homicidesNumberWrap"><span class="homicidesNumber">0</span> dead</p>
+              </div>
             </div>
           </div>
           <div class="share-tools">
@@ -95,9 +103,10 @@
         <footer>
           <div class="wrapper">
             <p class="inspired">Inspired by <a href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank">The Trace</a></p>
-            <p class="source">Source: 							<a href="http://www.gunviolencearchive.org/" target="_blank">Gun Violence Archive</a></p>
             <p class="credit">Design by Emma Patti Harris</p>
-            <p class="credit">Development by Jin Bae Kim</p>
+            <p class="credit">Development by Jin Bae Kim</p><br>
+            <p>Baltimore data is sourced from <a href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij">Open Baltimore </a>and specifically includes victim-based reports on shootings.</p><br>
+            <p>Maryland-wide data is sourced from <a href="http://www.gunviolencearchive.org/">Gun Violence Archive </a>and includes incidents in which a gun was fired under any circumstances, including non-criminal causes.</p>
           </div>
         </footer>
       </div>

@@ -475,6 +475,9 @@ th {
     @media (max-width: 600px) {
       .container .mapContainer p {
         font-size: 14px; } }
+  .container .mapContainer a {
+    text-decoration: none;
+    color: #daa520; }
   .container .mapContainer .overlay {
     width: 100%;
     height: 100%;
@@ -493,6 +496,7 @@ th {
       padding-right: 230px; }
       @media (max-width: 600px) {
         .container .mapContainer .overlay .overlayTextContainer {
+          width: 100%;
           top: 50px;
           padding: 0; } }
       .container .mapContainer .overlay .overlayTextContainer .overlayHeadline {
@@ -522,16 +526,31 @@ th {
         padding: 7px;
         font-size: 24px;
         font-style: italic;
-        background-color: rgba(155, 155, 155, 0.3);
+        background-color: #1e1e1e;
         float: right;
         clear: both;
         color: white; }
+        .container .mapContainer .overlay .overlayTextContainer .overlaySubhead span {
+          color: #daa520; }
         @media (max-width: 888px) {
           .container .mapContainer .overlay .overlayTextContainer .overlaySubhead {
             font-size: 18px; } }
         @media (max-width: 768px) {
           .container .mapContainer .overlay .overlayTextContainer .overlaySubhead {
             font-size: 12px; } }
+      .container .mapContainer .overlay .overlayTextContainer .disclaimer {
+        padding: 7px;
+        background-color: #1e1e1e;
+        color: white;
+        clear: both;
+        text-align: center; }
+        .container .mapContainer .overlay .overlayTextContainer .disclaimer h2 {
+          margin: 0;
+          float: none;
+          text-align: center; }
+        .container .mapContainer .overlay .overlayTextContainer .disclaimer p {
+          margin: 10px auto;
+          max-width: 480px; }
     .container .mapContainer .overlay .arrowsContainer {
       display: inline-block;
       float: right; }
@@ -598,8 +617,7 @@ th {
             position: relative;
             display: block;
             width: 80%;
-            margin: 2px auto 0 auto;
-            z-index: 1000; } }
+            margin: 2px auto 0 auto; } }
         .container .mapContainer .mapHUD .mapButtonsContainer .mobileDirections p {
           color: white;
           font-weight: bold;
@@ -609,8 +627,7 @@ th {
         width: 208px;
         margin: 11px auto;
         padding: 5px;
-        background-color: white;
-        z-index: 1000; }
+        background-color: white; }
         .container .mapContainer .mapHUD .mapButtonsContainer .mapButton p {
           color: #8c8c8c;
           text-align: center;
@@ -640,34 +657,32 @@ th {
           clear: both;
           content: "";
           display: table; } }
+      .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .numbersWrapper {
+        background-color: #daa520;
+        padding: 10px; }
       .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p {
-        margin: 5px 0;
+        margin: 0;
         font-weight: bold;
         text-transform: uppercase; }
-        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.numbersIntro {
-          margin-top: 10px; }
-        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.homicidesNumberWrap, .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.shootingsNumberWrap {
-          color: white;
-          padding: 8px; }
-        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.homicidesNumberWrap {
-          background-color: #900020; }
-        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.shootingsNumberWrap {
-          background-color: #daa520; }
-        @media (max-width: 600px) {
-          .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.numbersIntro {
-            margin-top: 0; }
-            .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.numbersIntro .withinMile br {
-              display: none; }
-          .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.homicidesNumberWrap, .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.shootingsNumberWrap {
-            display: inline-block;
-            width: 49%;
-            padding: 4px; }
-          .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.homicidesNumberWrap {
-            float: left; }
-          .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers p.shootingsNumberWrap {
-            float: right; } }
+      .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .numbersIntro {
+        margin: 10px 0; }
+      .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .homicidesNumberWrap, .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .shootingsNumberWrap {
+        padding: 8px; }
+      .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .homicidesNumberWrap {
+        color: white;
+        background-color: #900020; }
+      @media (max-width: 600px) {
+        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .numbersIntro {
+          margin-top: 0; }
+          .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .numbersIntro .withinMile br {
+            display: none; }
+        .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .homicidesNumberWrap, .container .mapContainer .mapHUD .mapStatsContainer .mapStatItem__numbers .shootingsNumberWrap {
+          display: block;
+          width: 49%;
+          padding: 4px;
+          margin: 0 auto; } }
     .container .mapContainer .mapHUD .share-tools {
-      margin: 10px;
+      margin: 5px;
       font-size: 24px;
       vertical-align: middle;
       color: #daa520;
@@ -687,7 +702,7 @@ th {
           color: #900020; }
       @media (max-width: 600px) {
         .container .mapContainer .mapHUD .share-tools {
-          font-size: 26px; } }
+          font-size: 20px; } }
     .container .mapContainer .mapHUD .infoboxContainer {
       margin-top: 11px;
       color: white; }
@@ -699,16 +714,14 @@ th {
         margin: 10px 0; }
         .container .mapContainer .mapHUD .infoboxContainer .infobox p {
           padding: 1px 0; }
+          .container .mapContainer .mapHUD .infoboxContainer .infobox p.killedCount {
+            color: #900020; }
         .container .mapContainer .mapHUD .infoboxContainer .infobox .cartodb-infobox {
           padding: 10px;
           height: 100%;
           background: white;
           text-align: left;
           z-index: 105; }
-        .container .mapContainer .mapHUD .infoboxContainer .infobox--homicides p:first-child {
-          color: #900020; }
-        .container .mapContainer .mapHUD .infoboxContainer .infobox--shootings p:first-child {
-          color: #daa520; }
     .container .mapContainer .mapHUD .mobileFooter {
       display: none; }
       @media (max-width: 600px) {
@@ -726,13 +739,12 @@ th {
     right: 0;
     width: 219px;
     text-align: left; }
-    .container .mapContainer footer .wrapper p {
-      font-size: 12px;
-      font-family: "Lato", sans-serif;
-      color: white; }
-      .container .mapContainer footer .wrapper p a {
-        text-decoration: none;
-        color: #daa520; }
+    .container .mapContainer footer .wrapper {
+      padding: 4px; }
+      .container .mapContainer footer .wrapper p {
+        font-size: 12px;
+        font-family: "Lato", sans-serif;
+        color: white; }
     @media (max-width: 600px) {
       .container .mapContainer footer {
         display: none;
