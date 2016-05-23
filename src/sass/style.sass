@@ -8,6 +8,13 @@
 /* General Styles */
 
 // body
+.leaflet-control-geocoder-form input 
+	width: 210px
+	font-size: 16px
+	font-family: 'Lato', sans-serif
+	text-align: center
+	text-transform: uppercase
+	padding: 4px
 .container
 	.mapContainer
 		width: 100%
@@ -29,7 +36,7 @@
 			left: 0
 			padding-right: 240px			
 			background-color: rgba(0,0,0,.8)
-			z-index: 999
+			z-index: 10
 			@media (max-width: $sm1)
 				padding: 0
 			.overlayTextContainer
@@ -59,35 +66,6 @@
 						padding: 5px
 						&--2
 							float: left
-				.overlaySubhead				
-					margin: 10px 0
-					padding: 7px
-					font-size: 24px
-					font-style: italic
-					// background-color: rgba(0,0,0,.5)
-					background-color: $nearblack
-					float: right
-					clear: both
-					color: white
-					span
-						color: $goldenrod
-					@media (max-width: $md1)
-						font-size: 18px
-					@media (max-width: $md2)
-						font-size: 12px
-				.disclaimer
-					padding: 7px
-					background-color: $nearblack
-					color: white
-					clear: both
-					text-align: center
-					h2
-						margin: 0
-						float: none
-						text-align: center
-					p
-						margin: 10px auto
-						max-width: 480px
 			.arrowsContainer
 				display: inline-block
 				float: right
@@ -96,8 +74,6 @@
 					background-color: rgba(0,0,0,.5)
 					padding: 5px
 					text-align: right
-					&:last-child
-						text-align: center
 					p
 						display: inline-block
 						font-family: $lato
@@ -149,7 +125,7 @@
 						display: block
 						width: 80%
 						margin: 2px auto 0 auto
-						// z-index: 1000
+						z-index: 11
 					p
 						color: white
 						font-weight: bold
@@ -160,7 +136,7 @@
 					margin: 11px auto
 					padding: 5px
 					background-color: white
-					// z-index: 1000
+					z-index: 11
 					p
 						color: $gray
 						text-align: center
@@ -253,7 +229,7 @@
 						height: 100%
 						background: white
 						text-align: left
-						z-index: 105
+						z-index: 11
 			.mobileFooter
 				display: none
 				@media (max-width: $sm1)
@@ -270,6 +246,7 @@
 			right: 0
 			width: 219px
 			text-align: left
+			z-index: 11
 			.wrapper
 				padding: 4px
 				p

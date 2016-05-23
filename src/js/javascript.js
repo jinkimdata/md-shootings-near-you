@@ -234,7 +234,7 @@ var app = {
 			    collapsed: false, /* Whether its collapsed or not */
 			    position: 'topright', /* The position of the control */
 			    text: 'Locate', /* The text of the submit button */
-			    bounds: L.latLngBounds(L.latLng(37.864594, -79.577236), L.latLng(39.805303, -74.859640)),
+			    bounds: L.latLngBounds(L.latLng(39.844225, -79.612779), L.latLng(37.704858, -74.777296)),
 			    callback: function (results) {
 			    	if (results[0] != undefined) {		            
 			    		var bbox = results[0].boundingbox,
@@ -253,9 +253,7 @@ var app = {
 					};
 			    }
 			});
-			// if (!isMobile) {
-			// };
-				homicideMap.addControl(osmGeocoder);
+			homicideMap.addControl(osmGeocoder);
 			$('.mapButton--nearby').on('click', function() {
 				detectUserLocation();
 			});			

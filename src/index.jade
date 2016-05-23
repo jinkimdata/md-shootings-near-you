@@ -22,10 +22,6 @@ html(class="no-js", lang="en")
 		//Mobile Specific Metas
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 
-		//CSS
-		link(rel="stylesheet" href="#{link}css/cartodb.css")
-		link(rel="stylesheet" href="#{link}css/Control.OSMGeocoder.css")
-		link(rel="stylesheet", type="text/css", href="#{link}css/style.css")
 
 		//Fonts
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
@@ -48,31 +44,12 @@ html(class="no-js", lang="en")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
 	body
-		//- #tophat
-			.group
-			#logo
-				a(href="http://www.baltimoresun.com")
-					img(src="#{link}images/baltimore-sun-logo-white.png" border="0")
-			.tophat-share-tools
-				span.icon-facebook
-				span.icon-twitter
 		.container
 			.mapContainer
 				.overlay
 					.overlayTextContainer
 						h2.overlayHeadline.overlayHeadline--1 How violent is your 
 						h2.overlayHeadline.overlayHeadline--2 neighborhood?
-						h2.overlaySubhead Data from 
-							span 2015 - current.
-							|  Last updated 05/14/16.
-						.disclaimer
-							h2 About the data
-							p Baltimore data is sourced from 
-								a(href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij") Open Baltimore 
-								| and specifically includes victim-based reports on shootings.
-							p Maryland-wide data is sourced from 
-								a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
-								| and includes incidents in which a gun was fired under any circumstances, including non-criminal causes.
 					.arrowsContainer
 						.arrow 
 							p Enter your address
@@ -81,10 +58,8 @@ html(class="no-js", lang="en")
 							p See results near you
 							img.arrowImg(src="#{link}images/arrow.png")
 						.arrow 
-							p View the full map
+							p Click for full map
 							img.arrowImg(src="#{link}images/arrow.png")
-						.arrow 
-							p Or click on the map
 				#homicideMap.cartodbMap
 				.mapHUD
 					.mapButtonsContainer
@@ -117,10 +92,7 @@ html(class="no-js", lang="en")
 					.mobileFooter About this interactive
 				footer
 					.wrapper
-						p.inspired Inspired by 
-							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace
-						p.credit Design by Emma Patti Harris
-						p.credit Development by Jin Bae Kim
+						p Data from 2015 - current. Last updated 05/14/16.
 						br
 						p Baltimore data is sourced from 
 							a(href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij") Open Baltimore 
@@ -129,13 +101,21 @@ html(class="no-js", lang="en")
 						p Maryland-wide data is sourced from 
 							a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
 							| and includes incidents in which a gun was fired under any circumstances, including non-criminal causes.
+						br
+						p.inspired Inspired by 
+							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace
+						p.credit Design by Emma Patti Harris
+						p.credit Development by Jin Bae Kim
 
+		//CSS
+		link(rel="stylesheet" href="#{link}css/cartodb.css")
+		link(rel="stylesheet", type="text/css", href="#{link}css/style.css")
 		//app
 		script(src="#{link}js/min/jquery-1.10.2.min.js")
 		//- script(src="#{link}js/min/modernizr.js")
 		script(src="#{link}js/min/cartodb.js")
 		script(src="#{link}js/min/Control.OSMGeocoder.js")
-		script(src="#{link}js/app.js")
-		//- script(src="#{link}js/min/app.min.js")
+		//- script(src="#{link}js/app.js")
+		script(src="#{link}js/min/app.min.js")
 
 		include includes/omniture.html

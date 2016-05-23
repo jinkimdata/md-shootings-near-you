@@ -205,7 +205,7 @@ var app = {
                 collapsed: false,
                 position: "topright",
                 text: "Locate",
-                bounds: L.latLngBounds(L.latLng(37.864594, -79.577236), L.latLng(39.805303, -74.85964)),
+                bounds: L.latLngBounds(L.latLng(39.844225, -79.612779), L.latLng(37.704858, -74.777296)),
                 callback: function(results) {
                     if (results[0] != undefined) {
                         var bbox = results[0].boundingbox, first = new L.LatLng(bbox[0], bbox[2]), second = new L.LatLng(bbox[1], bbox[3]), bounds = new L.LatLngBounds([ first, second ]);
