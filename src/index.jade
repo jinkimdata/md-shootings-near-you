@@ -22,7 +22,6 @@ html(class="no-js", lang="en")
 		//Mobile Specific Metas
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 
-
 		//Fonts
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 
@@ -31,7 +30,7 @@ html(class="no-js", lang="en")
 		meta(property="og:url", content="#{link}")
 		meta(property="og:image", content="#{link}images/thumb.png")
 		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="Shootings and homicides in Maryland")
+		meta(property="og:description", content="See shootings near you since 2015.")
 		meta(property="fb:app_id", content="310302989040998")
 
 		//Twitter Stuff
@@ -39,11 +38,12 @@ html(class="no-js", lang="en")
 		meta(name="twitter:site", content="@baltimoresun")
 		meta(name="twitter:creator", content="@baltsundata")
 		meta(name="twitter:title", content="How violent is your neighborhood?")
-		meta(name="twitter:description", content="Shootings and homicides in Maryland")
+		meta(name="twitter:description", content="See shootings near you since 2015.")
 		meta(name="twitter:image", content="#{link}images/thumb.png")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
 	body
+		include includes/omniture.html
 		.container
 			.mapContainer
 				.overlay
@@ -54,7 +54,7 @@ html(class="no-js", lang="en")
 						.arrow 
 							p Enter your address
 							img.arrowImg(src="#{link}images/arrow.png")
-						.arrow 
+						.arrow.arrow--nearby
 							p See results near you
 							img.arrowImg(src="#{link}images/arrow.png")
 						.arrow 
@@ -63,9 +63,6 @@ html(class="no-js", lang="en")
 				#homicideMap.cartodbMap
 				.mapHUD
 					.mapButtonsContainer
-						.mobileDirections
-							p Click and drag on the map
-							p or use the buttons below
 						.mapButton.mapButton--nearby
 							p Locate me
 						.mapButton.mapButton--full
@@ -86,7 +83,7 @@ html(class="no-js", lang="en")
 						span.icon.icon-facebook
 						span.icon.icon-twitter
 					.infoboxContainer
-						p Hover over a point for details on the incident
+						p Hover over a marker for details on the incident
 						.infobox.infobox--homicides
 						.infobox.infobox--shootings
 					.mobileFooter About this interactive
@@ -100,7 +97,7 @@ html(class="no-js", lang="en")
 						br
 						p Maryland-wide data is sourced from 
 							a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
-							| and includes incidents in which a gun was fired under any circumstances, including non-criminal causes.
+							| and includes incidents in which a gun was fired under various circumstances, including non-criminal causes.
 						br
 						p.inspired Inspired by 
 							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace
@@ -118,4 +115,3 @@ html(class="no-js", lang="en")
 		//- script(src="#{link}js/app.js")
 		script(src="#{link}js/min/app.min.js")
 
-		include includes/omniture.html
