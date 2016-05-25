@@ -5,9 +5,9 @@ var app = {
         app.share();
     },
     share: function() {
+        var url = "http://data.baltimoresun.com/news/shootings-near-you";
         $(".icon-twitter").on("click", function() {
             var tweet = getSocialLang();
-            var url = "http://data.baltimoresun.com/jin/md-shootings-near-you";
             var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + url + "&tw_p=tweetbutton";
             window.open(twitter_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
@@ -16,7 +16,6 @@ var app = {
             var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png";
             var title = "How violent is your neighborhood?";
             var description = getSocialLang();
-            var url = "http://data.baltimoresun.com/jin/md-shootings-near-you";
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
@@ -31,7 +30,7 @@ var app = {
             } else {
                 area = "in my area";
             }
-            return "Since 2015, " + stats[0] + " shootings " + area + " resulted in " + stats[1] + " deaths.";
+            return "Since 2015, " + stats[0] + " shootings " + area + " resulted in " + stats[1] + " deaths, @baltsundata map shows. " + url;
         }
     },
     createMap: function() {
@@ -133,7 +132,7 @@ var app = {
                         2: "Position unavailable",
                         3: "Request timeout"
                     };
-                    alert(errors[error.code]) + ". Please input the address manually.";
+                    alert(errors[error.code] + ". Please input the address manually.");
                 }
             }
             function createProximityMap(position) {
@@ -183,7 +182,6 @@ var app = {
             }
             function countPoints(shootingsSQL, homicidesSQL) {
                 var incidentsCount = 0;
-                var shootingsCount = 0;
                 var homicidesCount = 0;
                 $.getJSON("https://baltsun.cartodb.com/api/v2/sql/?q=" + shootingsSQL, function(data) {
                     $.each(data.rows, function(key, val) {
@@ -201,7 +199,6 @@ var app = {
                         }
                         $(".incidentsNumber").text(incidentsCount);
                         $(".homicidesNumber").text(homicidesCount);
-                        $(".shootingsNumber").text(shootingsCount);
                     });
                 });
             }
@@ -221,7 +218,7 @@ var app = {
                         };
                         createProximityMap(newPos);
                     } else {
-                        alert("Error: Cannot find address in Maryland.");
+                        alert("Address not found. Please try again with more details such as ZIP code or city name.");
                     }
                 }
             });
@@ -258,12 +255,12 @@ var app = {
     otherMobileFix: function() {
         var isMobile = app.mobileCheck();
         var tablet = window.matchMedia("only screen and (max-width: 760px)");
+        $(".mobileFooter").on("click touchend", function() {
+            $("footer").fadeIn("fast");
+        });
         if (tablet.matches || isMobile) {
             $(".infoboxContainer").hide();
-            $(".mobileFooter").on("click", function() {
-                $("footer").fadeIn("fast");
-            });
-            $("footer").on("click", function() {
+            $("footer").on("click touchend", function() {
                 $("footer").fadeOut("fast");
             });
         }

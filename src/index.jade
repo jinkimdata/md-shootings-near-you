@@ -6,8 +6,8 @@ doctype html
 //if IE 8
 	<html class="no-js lt-ie9">
 
-- var link = "http://data.baltimoresun.com/jin/md-shootings-near-you/"
-- var link = ""
+- var link = "http://data.baltimoresun.com/news/shootings-near-you/"
+//- var link = ""
 
 html(class="no-js", lang="en")
 
@@ -48,8 +48,8 @@ html(class="no-js", lang="en")
 			.mapContainer
 				.overlay
 					.overlayTextContainer
-						h2.overlayHeadline.overlayHeadline--1 How violent is your 
-						h2.overlayHeadline.overlayHeadline--2 neighborhood?
+						h2.overlayHeadline.overlayHeadline--1 Shootings near you 
+						//- h2.overlayHeadline.overlayHeadline--2 
 					.arrowsContainer
 						.arrow 
 							p Enter your address
@@ -86,7 +86,8 @@ html(class="no-js", lang="en")
 						p Hover over a marker for details on the incident
 						.infobox.infobox--homicides
 						.infobox.infobox--shootings
-					.mobileFooter About this interactive
+					.mobileFooter Data from 2015 - current. 
+						span Click for more details.
 				footer
 					.wrapper
 						p Data from 2015 - current. Last updated 05/14/16.

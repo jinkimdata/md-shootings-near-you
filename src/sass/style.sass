@@ -12,7 +12,7 @@
 	width: 210px
 	font-size: 16px
 	font-family: 'Lato', sans-serif
-	text-align: center
+	text-align: left
 	text-transform: uppercase
 	padding: 4px
 .container
@@ -162,7 +162,8 @@
 					&:hover
 						background-color: $gray
 			.mapStatsContainer					
-				background-color: white
+				color: white
+				background-color: $nearblack
 				padding: 5px
 				@media (max-width: $sm1)
 					+clearfix
@@ -180,8 +181,8 @@
 						.homicidesNumberWrap, .shootingsNumberWrap
 							padding: 8px
 						.shootingsNumberWrap
+							color: $nearblack
 						.homicidesNumberWrap
-							color: white
 							background-color: $burgundy
 						@media (max-width: $sm1)
 							.numbersIntro
@@ -234,14 +235,17 @@
 						z-index: 11
 			.mobileFooter
 				display: none
+				background-color: $nearblack
+				color: white
+				padding: 3px 0
+				font-size: 12px
+				font-family: $lato
+				cursor: pointer
 				@media (max-width: $sm1)
 					display: block
-					background-color: $nearblack
-					color: white
-					padding: 3px 0
-					font-size: 12px
-					font-family: $lato
-					cursor: pointer
+				span
+					color: $goldenrod
+
 		footer
 			position: absolute
 			bottom: 7px
@@ -266,8 +270,10 @@
 					position: absolute
 					top: 30%
 					width: 100%
-					margin: 0 auto
 					text-align: center
+					p
+						max-width: 400px
+						margin: 0 auto
 // /* Tophat */
 
 // #tophat
