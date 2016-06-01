@@ -7,15 +7,15 @@ var app = {
     share: function() {
         var url = "http://data.baltimoresun.com/news/shootings-near-you";
         var shortUrl = "bsun.md/1saCzGK";
+        var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png";
+        var title = "How violent is your neighborhood?";
         $(".icon-twitter").on("click", function() {
             var tweet = getSocialLang() + shortUrl;
-            var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + shortUrl + "&tw_p=tweetbutton";
+            var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + url + "&tw_p=tweetbutton";
             window.open(twitter_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
         });
         $(".icon-facebook").on("click", function() {
-            var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png";
-            var title = "How violent is your neighborhood?";
             var description = getSocialLang();
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
@@ -55,7 +55,7 @@ var app = {
                 attributionControl: false
             };
             var homicideMap = new L.Map("homicideMap", options);
-            L.tileLayer("http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png", {
+            L.tileLayer("http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png", {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
             }).addTo(homicideMap);
             var mainlayers = [];

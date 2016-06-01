@@ -59,7 +59,7 @@ var app = {
 				attributionControl: false
 			};
 			var homicideMap = new L.Map('homicideMap', options);
-			L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
+			L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',{
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 			}).addTo(homicideMap);								
 			var mainlayers = [];
@@ -70,6 +70,25 @@ var app = {
 				sublayers: [{
 					sql: "SELECT * FROM shootings_near_you_ob_gva",
 					cartocss: 
+						// '#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
+						// 'marker-line-color: #000;'+
+						// 'marker-line-width: 1;'+
+						// 'marker-line-opacity: 1;'+
+						// 'marker-placement: point;'+
+						// 'marker-type: ellipse;'+
+						// 'marker-width: 9;'+
+						// 'marker-fill: #fff;'+
+						// 'marker-allow-overlap: true;}'+
+						// '#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;'+
+						// 'marker-line-color: #fff;'+
+						// 'marker-line-width: 1;'+
+						// 'marker-line-opacity: 1;'+
+						// 'marker-placement: point;'+
+						// 'marker-type: ellipse;'+
+						// 'marker-width: 9;'+
+						// 'marker-fill: #000;'+
+						// 'marker-allow-overlap: true;}'
+
 						'#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
 						'marker-line-color: #900020;'+
 						'marker-line-width: 1;'+
