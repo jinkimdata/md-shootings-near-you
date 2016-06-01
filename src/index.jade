@@ -9,13 +9,15 @@ doctype html
 - var link = "http://data.baltimoresun.com/news/shootings-near-you/"
 //- var link = ""
 
+- var title = "Shootings map"
+
 html(class="no-js", lang="en")
 
 	head
 
 		//Basic page needs
 		meta(charset="utf-8")
-		title How violent is your neighborhood?
+		title #{title}
 		meta(name="description", content="Shootings and homicides in Maryland")
 		meta(name="author", content="Jin Bae Kim")
 
@@ -26,7 +28,7 @@ html(class="no-js", lang="en")
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat")
 
 		//Facebook Stuff
-		meta(property="og:title", content="How violent is your neighborhood?")
+		meta(property="og:title", content="#{title}")
 		meta(property="og:url", content="#{link}")
 		meta(property="og:image", content="#{link}images/thumb.png")
 		meta(property="og:site_name", content="The Baltimore Sun")
@@ -37,7 +39,7 @@ html(class="no-js", lang="en")
 		meta(name="twitter:card", content="summary")
 		meta(name="twitter:site", content="@baltimoresun")
 		meta(name="twitter:creator", content="@baltsundata")
-		meta(name="twitter:title", content="How violent is your neighborhood?")
+		meta(name="twitter:title", content="#{title}")
 		meta(name="twitter:description", content="See shootings near you since 2015.")
 		meta(name="twitter:image", content="#{link}images/thumb.png")
 		meta(name="twitter:domain", content="baltimoresun.com")
@@ -48,8 +50,8 @@ html(class="no-js", lang="en")
 			.mapContainer
 				.overlay
 					.overlayTextContainer
-						h2.overlayHeadline.overlayHeadline--1 Shootings near you 
-						//- h2.overlayHeadline.overlayHeadline--2 
+						h2.overlayHeadline.overlayHeadline--1 How violent is your 
+						h2.overlayHeadline.overlayHeadline--2 neighborhood?
 					.arrowsContainer
 						.arrow 
 							p Enter your address
@@ -110,9 +112,7 @@ html(class="no-js", lang="en")
 		link(rel="stylesheet", type="text/css", href="#{link}css/style.css")
 		//app
 		script(src="#{link}js/min/jquery-1.10.2.min.js")
-		//- script(src="#{link}js/min/modernizr.js")
 		script(src="#{link}js/min/cartodb.js")
 		script(src="#{link}js/min/Control.OSMGeocoder.js")
-		//- script(src="#{link}js/app.js")
 		script(src="#{link}js/min/app.min.js")
 

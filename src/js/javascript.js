@@ -6,14 +6,15 @@ var app = {
 	},
 	share: function(){
 		var url = "http://data.baltimoresun.com/news/shootings-near-you"; //Interactive URL
+		var shortUrl = "bsun.md/1saCzGK";
+		var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png"; //Picture URL
+		var title = "How violent is your neighborhood?"; //Post title
 		$(".icon-twitter").on("click", function(){			
-			var tweet = getSocialLang(); //Tweet text
+			var tweet = getSocialLang() + shortUrl; //Tweet text
 			var twitter_url = "https://twitter.com/intent/tweet?text="+tweet+"&url="+url+"&tw_p=tweetbutton";
 			window.open(twitter_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
 		$(".icon-facebook").on("click", function(){
-			var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png"; //Picture URL
-			var title = "How violent is your neighborhood?"; //Post title
 			var description = getSocialLang(); //Post description
 	    	var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link="+
 	    	url+"&picture="+picture+"&name="+title+"&description="+description+
@@ -33,7 +34,7 @@ var app = {
 			return "Since 2015, " + 
 			stats[0] + " shootings " + 
 			area + " resulted in " + 
-			stats[1] + " deaths, @baltsundata map shows. " + url;
+			stats[1] + " deaths, @baltsundata map shows. ";
 		};
 	},
 	createMap: function() {
@@ -48,7 +49,7 @@ var app = {
 		window.onload = function() {
 			// Instantiate new map object, place it in 'map' element
 			var options = {				
-				center: [39.118985, -76.593420],
+				center: [39.118985, -76.375932],
 				zoom: 12,
 				touchZoom: true,
 				scrollWheelZoom: true,
@@ -68,8 +69,9 @@ var app = {
 				type: 'cartodb',
 				sublayers: [{
 					sql: "SELECT * FROM shootings_near_you_ob_gva",
-					cartocss: '#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;'+
-						'marker-line-color: #daa520;'+
+					cartocss: 
+						'#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
+						'marker-line-color: #900020;'+
 						'marker-line-width: 1;'+
 						'marker-line-opacity: 1;'+
 						'marker-placement: point;'+
@@ -78,8 +80,8 @@ var app = {
 						'marker-fill: #fff;'+
 						'marker-allow-overlap: true;'+
 						'[zoom>13]{marker-width: 8;}}'+
-						'#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
-						'marker-line-color: #900020;'+
+						'#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;'+
+						'marker-line-color: #daa520;'+
 						'marker-line-width: 1;'+
 						'marker-line-opacity: 1;'+
 						'marker-placement: point;'+
@@ -90,8 +92,6 @@ var app = {
 						'[zoom>13]{marker-width: 8;}}'
 				}]
 			};
-			// For storing the sublayers
-			mainlayers = [];			
 			// Add data layer to your homicideMap
 			cartodb.createLayer(homicideMap,layerSource, 
 				{
@@ -99,17 +99,15 @@ var app = {
 				})
 				.addTo(homicideMap)
 				.done(function(layer) {
-					for (var i = 0; i < layer.getSubLayerCount(); i++) {
-						mainlayers[i] = layer.getSubLayer(i);
-					}; 					
-					mainlayers[0].setInteractivity('address, date, killed');
+					mainlayers[0] = layer.getSubLayer(0);
+					mainlayers[0].setInteractivity('address, date, killed, killedbool');
 					var shootingsTooltip = layer.leafletMap.viz.addOverlay({
 						type: 'infobox',
 						layer: mainlayers[0],
 						template:'<div class="shootingsInfobox">'+
 							'<p>{{address}}</p>'+
 							'<p>{{date}}</p>'+
-							'<p class="killedCount"># killed: {{killed}}</p></div>',
+							'{{#killedbool}}<p class="killedCount"># killed: {{killed}}</p>{{/killedbool}}</div>',
 						width: 208,
 						fields: [{
 							address: 'address',
@@ -124,7 +122,7 @@ var app = {
 						lat -= .02;
 						lon -= .04;
 						zoomLvl -= 1;
-					}
+					};
 					homicideMap.setView([lat, lon], zoomLvl);
 				})
 				.error(function(err) {
@@ -233,7 +231,7 @@ var app = {
 			var osmGeocoder = new L.Control.OSMGeocoder({
 			    collapsed: false, /* Whether its collapsed or not */
 			    position: 'topright', /* The position of the control */
-			    text: 'Locate', /* The text of the submit button */
+			    text: 'Enter address', /* The text of the submit button */
 			    bounds: L.latLngBounds(L.latLng(39.844225, -79.612779), L.latLng(37.704858, -74.777296)),
 			    callback: function (results) {
 			    	if (results[0] != undefined) {		            
@@ -249,7 +247,7 @@ var app = {
 						}
 						createProximityMap(newPos);
 					} else {
-						alert("Address not found. Please try again with more details such as ZIP code or city name.");
+						alert("Address not found. Please try again with more details, or click the location on the map.");
 					};
 			    }
 			});
@@ -287,12 +285,12 @@ var app = {
 	otherMobileFix: function() {
 		var isMobile = app.mobileCheck();
 	    var tablet = window.matchMedia("only screen and (max-width: 760px)");	    
-	    $('.mobileFooter').on('click touchend',function(){
+	    $('.mobileFooter').on('click',function(){
 	    	$('footer').fadeIn('fast');
 	    });
 	    if (tablet.matches || isMobile) {
 			$('.infoboxContainer').hide();
-	    	$('footer').on('click touchend',function(){ 
+	    	$('footer').on('click',function(){ 
 	    		$('footer').fadeOut('fast');
 	    	});
 	    };

@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"pos",
+				"position"
+			],
+			[
+				"mobile",
+				"mobileCheck"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
 				"cm",
 				"compileSass"
 			],
@@ -20,13 +32,26 @@
 	"buffers":
 	[
 		{
-			"contents": "doctype html\n//if lt IE 7\n	<html class=\"no-js lt-ie9 lt-ie8 lt-ie7\">\n//if IE 7\n	<html class=\"no-js lt-ie9 lt-ie8\">\n//if IE 8\n	<html class=\"no-js lt-ie9\">\n\n- var link = {\"datalink\": \"http://data.baltimoresun.com/jin/md-shootings-near-you/\"}\n- var link = {\"datalink\": \"\"}\n\nhtml(class=\"no-js\", lang=\"en\")\n\n	head\n\n		//Basic page needs\n		meta(charset=\"utf-8\")\n		title How violent is your neighborhood?\n		meta(name=\"description\", content=\"Shootings and homicides in Maryland\")\n		meta(name=\"author\", content=\"Jin Bae Kim\")\n\n		//Mobile Specific Metas\n		meta(name=\"viewport\", content=\"width=device-width, initial-scale=1, maximum-scale=1\")\n\n		//CSS\n		link(rel=\"stylesheet\" href=\"#{link.datalink}css/cartodb.css\")\n		link(rel=\"stylesheet\" href=\"#{link.datalink}css/Control.OSMGeocoder.css\")\n		link(rel=\"stylesheet\", type=\"text/css\", href=\"#{link.datalink}css/style.css\")\n\n		//Fonts\n		link(rel=\"stylesheet\", type=\"text/css\", href=\"http://fonts.googleapis.com/css?family=Old+Standard+TT|Lato|Montserrat\")\n\n		//Facebook Stuff\n		meta(property=\"og:title\", content=\"How violent is your neighborhood?\")\n		meta(property=\"og:url\", content=\"#{link.datalink}\")\n		meta(property=\"og:image\", content=\"#{link.datalink}images/thumb.png\")\n		meta(property=\"og:site_name\", content=\"The Baltimore Sun\")\n		meta(property=\"og:description\", content=\"Shootings and homicides in Maryland\")\n		meta(property=\"fb:app_id\", content=\"310302989040998\")\n\n		//Twitter Stuff\n		meta(name=\"twitter:card\", content=\"summary\")\n		meta(name=\"twitter:site\", content=\"@baltimoresun\")\n		meta(name=\"twitter:creator\", content=\"@baltsundata\")\n		meta(name=\"twitter:title\", content=\"How violent is your neighborhood?\")\n		meta(name=\"twitter:description\", content=\"Shootings and homicides in Maryland\")\n		meta(name=\"twitter:image\", content=\"#{link.datalink}images/thumb.png\")\n		meta(name=\"twitter:domain\", content=\"baltimoresun.com\")\n\n	body\n		//- #tophat\n			.group\n			#logo\n				a(href=\"http://www.baltimoresun.com\")\n					img(src=\"#{link.datalink}images/baltimore-sun-logo-white.png\" border=\"0\")\n			.tophat-share-tools\n				span.icon-facebook\n				span.icon-twitter\n		.container\n			.mapContainer\n				.overlay\n					.overlayTextContainer\n						h2.overlayHeadline.overlayHeadline--1 How violent is your \n						h2.overlayHeadline.overlayHeadline--2 neighborhood?\n						h2.overlaySubhead Data from 2015 - current. Last updated 01/01/16.\n					.arrowsContainer\n						.arrow \n							p Enter your address\n							img.arrowImg(src=\"#{link.datalink}images/arrow.png\")\n						.arrow \n							p See results near you\n							img.arrowImg(src=\"#{link.datalink}images/arrow.png\")\n						.arrow \n							p View the full map\n							img.arrowImg(src=\"#{link.datalink}images/arrow.png\")\n						.arrow \n							p Or click on the map\n				#homicideMap.cartodbMap\n				.mapHUD\n					.mapButtonsContainer\n						.mobileDirections\n							p Click and drag on the map\n							p or use the buttons below\n						.mapButton.mapButton--nearby\n							p Locate me\n						.mapButton.mapButton--full\n							p View full map\n					.mapStatsContainer\n						.mapStatItem.mapStatItem__numbers\n							p.numbersIntro In \n								span.incidentsNumber\n								span  incident\n								span.incidentsPlural s\n								span.withinMile <br> within one mile\n								span :\n							p.homicidesNumberWrap #[span.homicidesNumber 0] killed\n							p.shootingsNumberWrap #[span.shootingsNumber 0] injured\n					.share-tools\n						p.sharetext Share this statistic:\n						span.icon.icon-facebook\n						span.icon.icon-twitter\n					.infoboxContainer\n						p Hover over a point for details on the incident\n						.infobox.infobox--homicides\n						.infobox.infobox--shootings\n					.mobileFooter About this interactive\n				footer\n					.wrapper\n						p.inspired Inspired by \n							a(href=\"http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/\" target=\"_blank\") The Trace\n						p.source Source: 							\n							a(href=\"http://www.gunviolencearchive.org/\" target=\"_blank\") Gun Violence Archive\n						p.credit Design by Emma Patti Harris\n						p.credit Development by Jin Bae Kim\n\n		//app\n		//- script(src=\"#{link.datalink}js/min/jquery-1.10.2.min.js\")\n		//- script(src=\"#{link.datalink}js/min/modernizr.js\")\n		//- script(src=\"#{link.datalink}js/min/cartodb.js\")\n		//- script(src=\"#{link.datalink}js/min/Control.OSMGeocoder.js\")\n		script(src=\"#{link.datalink}js/app.js\")\n		//- script(src=\"#{link.datalink}js/min/app.min.js\")\n\n		include includes/omniture.html\n",
 			"file": "index.jade",
-			"file_size": 4400,
-			"file_write_time": 131074534400000000,
 			"settings":
 			{
-				"buffer_size": 4416,
+				"buffer_size": 4126,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "includes/omniture.html",
+			"settings":
+			{
+				"buffer_size": 655,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/index.html",
+			"settings":
+			{
+				"buffer_size": 5806,
 				"line_ending": "Unix"
 			}
 		},
@@ -42,7 +67,7 @@
 			"file": "js/javascript.js",
 			"settings":
 			{
-				"buffer_size": 12837,
+				"buffer_size": 11915,
 				"line_ending": "Unix"
 			}
 		},
@@ -50,7 +75,7 @@
 			"file": "sass/style.sass",
 			"settings":
 			{
-				"buffer_size": 6804,
+				"buffer_size": 6467,
 				"line_ending": "Unix"
 			}
 		},
@@ -74,15 +99,7 @@
 			"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/style.css",
 			"settings":
 			{
-				"buffer_size": 21178,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/cartodb.css",
-			"settings":
-			{
-				"buffer_size": 110463,
+				"buffer_size": 11623,
 				"line_ending": "Unix"
 			}
 		}
@@ -147,11 +164,15 @@
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/js/min",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/images",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/includes",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/js",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/sass"
 	],
 	"file_history":
 	[
+		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/cartodb.css",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/js/min/Control.OSMGeocoder.js",
+		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/Control.OSMGeocoder.css",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/dollars-per-vote/dollars-per-vote.sublime-project",
 		"/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/src/sass/style.sass",
 		"/Users/jikim/Documents/bsun/online/package.json",
@@ -203,6 +224,30 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"overlap: true",
+			"killedBool",
+			"shootingsCount",
+			"ismo",
+			"detectUserLocation",
+			"locate",
+			"locate ",
+			"detect",
+			"bounds",
+			"z-index",
+			"76.863829",
+			"39.107535",
+			"navigator",
+			"Trial date: 5/10/16",
+			"nero",
+			"76.583420",
+			"39.289156",
+			"link.datalink",
+			"bound",
+			"bounding",
+			"withinMile",
+			"md_nonfatal_shootings_2015",
+			"SELECT * FROM md_fatal_shootings_2015",
+			"SELECT * FROM md_nonfatal_shootings_2015",
 			"Election District\":1,\"Election Precinct\":1",
 			"zoom",
 			"mobileF",
@@ -241,15 +286,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4416,
+						"buffer_size": 4126,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4285,
-								4109
+								754,
+								754
 							]
 						],
 						"settings":
@@ -258,7 +303,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 702.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -266,6 +311,65 @@
 				},
 				{
 					"buffer": 1,
+					"file": "includes/omniture.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								183,
+								183
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5806,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/package.json",
 					"semi_transient": false,
 					"settings":
@@ -291,59 +395,60 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "js/javascript.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12837,
+						"buffer_size": 11915,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3003,
-								3030
+								2544,
+								2544
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 241.0,
+						"translation.x": 0.0,
+						"translation.y": 845.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "sass/style.sass",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6804,
+						"buffer_size": 6467,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1277,
-								1277
+								3702,
+								3702
 							]
 						],
 						"settings":
@@ -352,14 +457,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1978.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "sass/_variables.sass",
 					"semi_transient": false,
 					"settings":
@@ -383,11 +488,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "sass/_mixins.sass",
 					"semi_transient": false,
 					"settings":
@@ -412,24 +517,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/style.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21178,
+						"buffer_size": 11623,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								11351,
+								11351
 							]
 						],
 						"settings":
@@ -442,37 +547,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Users/jikim/Documents/bsun/online/org/2016/04/md-shootings-near-you/dist/css/cartodb.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 110463,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								68400,
-								68404
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -506,7 +581,7 @@
 		"cols":
 		[
 			0.0,
-			0.397996873467,
+			0.5,
 			1.0
 		],
 		"rows":
