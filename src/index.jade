@@ -7,9 +7,9 @@ doctype html
 	<html class="no-js lt-ie9">
 
 - var link = "http://data.baltimoresun.com/news/shootings-near-you/"
-//- var link = ""
+- var link = ""
 
-- var title = "Shootings map"
+- var title = "Find shootings near you"
 
 html(class="no-js", lang="en")
 
@@ -32,7 +32,7 @@ html(class="no-js", lang="en")
 		meta(property="og:url", content="#{link}")
 		meta(property="og:image", content="#{link}images/thumb.png")
 		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="See shootings near you since 2015.")
+		meta(property="og:description", content="Find shootings near you since 2015.")
 		meta(property="fb:app_id", content="310302989040998")
 
 		//Twitter Stuff
@@ -40,7 +40,7 @@ html(class="no-js", lang="en")
 		meta(name="twitter:site", content="@baltimoresun")
 		meta(name="twitter:creator", content="@baltsundata")
 		meta(name="twitter:title", content="#{title}")
-		meta(name="twitter:description", content="See shootings near you since 2015.")
+		meta(name="twitter:description", content="Find shootings near you since 2015.")
 		meta(name="twitter:image", content="#{link}images/thumb.png")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
@@ -50,8 +50,8 @@ html(class="no-js", lang="en")
 			.mapContainer
 				.overlay
 					.overlayTextContainer
-						h2.overlayHeadline.overlayHeadline--1 Shootings map
-						//- h2.overlayHeadline.overlayHeadline--2 neighborhood?
+						h2.overlayHeadline.overlayHeadline--1 Find shootings
+						h2.overlayHeadline.overlayHeadline--2 near you
 					.arrowsContainer
 						.arrow 
 							p Enter your address
@@ -62,6 +62,8 @@ html(class="no-js", lang="en")
 						.arrow 
 							p Click for full map
 							img.arrowImg(src="#{link}images/arrow.png")
+						.arrow.arrow--orClick
+							p Or click on a location
 				#homicideMap.cartodbMap
 				.mapHUD
 					.mapButtonsContainer
@@ -80,8 +82,9 @@ html(class="no-js", lang="en")
 									span  shooting
 									span.incidentsPlural s
 								p.homicidesNumberWrap #[span.homicidesNumber 0] dead
+								p.injuredNumberWrap #[span.injuredNumber 0] injured
 							p.dateRange From 2015 - current.
-							p.dateRange Last updated 05/14/16.
+							p.dateRange Last updated 05/28/16.
 					.share-tools
 						p.sharetext Share this statistic:
 						span.icon.icon-facebook
@@ -102,7 +105,7 @@ html(class="no-js", lang="en")
 						br
 						p Maryland-wide data is sourced from 
 							a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
-							| and includes incidents in which a gun was fired under various circumstances, including non-criminal causes.
+							| and includes incidents of shootings from various causes, including non-criminal instances.
 						br
 						p.inspired Inspired by 
 							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace

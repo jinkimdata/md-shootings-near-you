@@ -8,10 +8,10 @@ var app = {
 		var url = "http://data.baltimoresun.com/news/shootings-near-you"; //Interactive URL
 		var shortUrl = "bsun.md/1saCzGK";
 		var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png"; //Picture URL
-		var title = "How violent is your neighborhood?"; //Post title
+		var title = "Find shootigns near you"; //Post title
 		$(".icon-twitter").on("click", function(){			
 			var tweet = getSocialLang() + shortUrl; //Tweet text
-			var twitter_url = "https://twitter.com/intent/tweet?text="+tweet+"&url="+url+"&tw_p=tweetbutton";
+			var twitter_url = "https://twitter.com/intent/tweet?text="+tweet+"&url="+shortUrl+"&tw_p=tweetbutton";
 			window.open(twitter_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
 		$(".icon-facebook").on("click", function(){
@@ -26,6 +26,7 @@ var app = {
 			var stats = [];
 			stats[0] = $('.incidentsNumber').text();
 			stats[1] = $('.homicidesNumber').text();
+			stats[2] = $('.injuredNumber').text();
 			if (Number(stats[0]) > 500) {
 				area = "in Maryland"
 			} else {
@@ -33,7 +34,8 @@ var app = {
 			};
 			return "Since 2015, " + 
 			stats[0] + " shootings " + 
-			area + " resulted in " + 
+			area + " resulted in " +
+			stats[2] + " injuries and " + 
 			stats[1] + " deaths, @baltsundata map shows. ";
 		};
 	},
@@ -59,7 +61,7 @@ var app = {
 				attributionControl: false
 			};
 			var homicideMap = new L.Map('homicideMap', options);
-			L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',{
+			L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 			}).addTo(homicideMap);								
 			var mainlayers = [];
@@ -119,14 +121,16 @@ var app = {
 				.addTo(homicideMap)
 				.done(function(layer) {
 					mainlayers[0] = layer.getSubLayer(0);
-					mainlayers[0].setInteractivity('address, date, killed, killedbool');
+					mainlayers[0].setInteractivity('address, date, killed, injured');
 					var shootingsTooltip = layer.leafletMap.viz.addOverlay({
 						type: 'infobox',
 						layer: mainlayers[0],
 						template:'<div class="shootingsInfobox">'+
 							'<p>{{address}}</p>'+
 							'<p>{{date}}</p>'+
-							'{{#killedbool}}<p class="killedCount"># killed: {{killed}}</p>{{/killedbool}}</div>',
+							'<p class="injuredCounty"># injured: <span>{{injured}}</span></p>'+
+							'<p class="killedCount"># killed: <span>{{killed}}</span></p>'+
+							'</div>',
 						width: 208,
 						fields: [{
 							address: 'address',
@@ -228,13 +232,16 @@ var app = {
 			function countPoints(shootingsSQL, homicidesSQL) {
 				var incidentsCount = 0;
 				var homicidesCount = 0;
+				var injuredCount = 0;
 				$.getJSON('https://baltsun.cartodb.com/api/v2/sql/?q='+shootingsSQL, function(data) {
 					$.each(data.rows, function(key, val) {
 						incidentsCount++;
+						injuredCount += val.injured;
 					});					
 					$.getJSON('https://baltsun.cartodb.com/api/v2/sql/?q='+homicidesSQL, function(data) {
 						$.each(data.rows, function(key, val) {
 							homicidesCount += val.killed;
+							injuredCount += val.injured;
 							incidentsCount++;
 						});
 						if (incidentsCount == 1) {
@@ -244,6 +251,7 @@ var app = {
 						};
 						$('.incidentsNumber').text(incidentsCount);
 						$('.homicidesNumber').text(homicidesCount);
+						$('.injuredNumber').text(injuredCount);
 					});
 				});
 			};

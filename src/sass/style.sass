@@ -84,6 +84,8 @@
 					img
 						height: 12px
 						margin-left: 5px
+					&--orClick
+						text-align: center
 				@media (max-width: $sm1)
 					display: none
 		#homicideMap.cartodbMap
@@ -170,7 +172,7 @@
 				.mapStatItem
 					&__numbers
 						.numbersWrapper
-							background-color: $goldenrod
+							background-color: white
 							padding: 10px
 						p
 							margin: 0
@@ -178,25 +180,30 @@
 							text-transform: uppercase
 						.numbersIntro
 							margin: 10px 0
-						.homicidesNumberWrap, .shootingsNumberWrap
+						.homicidesNumberWrap, .shootingsNumberWrap, .injuredNumberWrap
 							padding: 8px
 						.shootingsNumberWrap
 							color: $nearblack
 						.homicidesNumberWrap
 							background-color: $burgundy
+						.injuredNumberWrap
+							background-color: darken($goldenrod, 5)
 						.dateRange
 							text-transform: none
-
+							font-size: .7em
 						@media (max-width: $sm1)
 							.numbersIntro
 								margin-top: 0
 								.withinMile br
 									display: none
-							.homicidesNumberWrap, .shootingsNumberWrap
+							.shootingsNumberWrap
 								display: block
 								width: 100%
 								padding: 4px
 								margin: 0 auto
+							.homicidesNumberWrap, .injuredNumberWrap
+								display: inline-block
+								width: 47%
 			.share-tools
 				// height: 100%
 				margin: 5px
@@ -229,7 +236,11 @@
 					p
 						padding: 1px 0
 						&.killedCount
+							span
 							color: $burgundy
+						&.injuredCounty
+							span
+							color: darken($goldenrod, 10)
 					.cartodb-infobox
 						padding: 10px
 						height: 100%
