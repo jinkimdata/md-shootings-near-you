@@ -7,7 +7,7 @@ doctype html
 	<html class="no-js lt-ie9">
 
 - var link = "http://data.baltimoresun.com/news/shootings-near-you/"
-- var link = ""
+//- var link = ""
 
 - var title = "Find shootings near you"
 
@@ -91,21 +91,18 @@ html(class="no-js", lang="en")
 						span.icon.icon-twitter
 					.infoboxContainer
 						p Hover over a marker for details on the incident
-						.infobox.infobox--homicides
-						.infobox.infobox--shootings
+						.infobox
 					.mobileFooter 
 						span About this interactive.
 				footer
 					.wrapper
-						//- p Data from 2015 - current. Last updated 05/14/16.
-						br
 						p Baltimore data is sourced from 
 							a(href="https://data.baltimorecity.gov/Public-Safety/BPD-Part-1-Victim-Based-Crime-Data/wsfq-mvij") Open Baltimore 
 							| and specifically includes victim-based reports on shootings.
 						br
 						p Maryland-wide data is sourced from 
 							a(href="http://www.gunviolencearchive.org/") Gun Violence Archive 
-							| and includes incidents of shootings from various causes, including non-criminal instances.
+							| and includes reports of shootings from media and law enforcement social media.
 						br
 						p.inspired Inspired by 
 							a(href="http://www.thetrace.org/2015/12/gun-deaths-interactive-map-2015/" target="_blank") The Trace

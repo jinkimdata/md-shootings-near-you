@@ -8,14 +8,14 @@ var app = {
 		var url = "http://data.baltimoresun.com/news/shootings-near-you"; //Interactive URL
 		var shortUrl = "bsun.md/1saCzGK";
 		var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png"; //Picture URL
-		var title = "Find shootigns near you"; //Post title
+		var title = "Find shootings near you"; //Post title
 		$(".icon-twitter").on("click", function(){			
-			var tweet = getSocialLang() + shortUrl; //Tweet text
+			var tweet = getSocialLang() +", @baltsundata map shows. "+ shortUrl; //Tweet text
 			var twitter_url = "https://twitter.com/intent/tweet?text="+tweet+"&url="+shortUrl+"&tw_p=tweetbutton";
 			window.open(twitter_url, 'mywin','left=200,top=200,width=500,height=300,toolbar=1,resizable=0'); return false;
 		});
 		$(".icon-facebook").on("click", function(){
-			var description = getSocialLang(); //Post description
+			var description = getSocialLang() +"."; //Post description
 	    	var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link="+
 	    	url+"&picture="+picture+"&name="+title+"&description="+description+
 	    	"&redirect_uri=http://www.facebook.com";    		
@@ -36,7 +36,7 @@ var app = {
 			stats[0] + " shootings " + 
 			area + " resulted in " +
 			stats[2] + " injuries and " + 
-			stats[1] + " deaths, @baltsundata map shows. ";
+			stats[1] + " deaths";
 		};
 	},
 	createMap: function() {
@@ -71,25 +71,26 @@ var app = {
 				type: 'cartodb',
 				sublayers: [{
 					sql: "SELECT * FROM shootings_near_you_ob_gva",
-					cartocss: 
+					cartocss:
 						// '#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
 						// 'marker-line-color: #000;'+
-						// 'marker-line-width: 1;'+
-						// 'marker-line-opacity: 1;'+
-						// 'marker-placement: point;'+
-						// 'marker-type: ellipse;'+
-						// 'marker-width: 9;'+
-						// 'marker-fill: #fff;'+
-						// 'marker-allow-overlap: true;}'+
-						// '#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;'+
-						// 'marker-line-color: #fff;'+
-						// 'marker-line-width: 1;'+
+						// 'marker-line-width: 2;'+
 						// 'marker-line-opacity: 1;'+
 						// 'marker-placement: point;'+
 						// 'marker-type: ellipse;'+
 						// 'marker-width: 9;'+
 						// 'marker-fill: #000;'+
 						// 'marker-allow-overlap: true;}'
+						// +
+						// '#md_shootings_near_you[killed=0]{marker-fill-opacity: 1;'+
+						// 'marker-line-color: #000;'+
+						// 'marker-line-width: 2;'+
+						// 'marker-line-opacity: 1;'+
+						// 'marker-placement: point;'+
+						// 'marker-type: ellipse;'+
+						// 'marker-width: 9;'+
+						// 'marker-fill: #fff;'+
+						// 'marker-allow-overlap: true;}' 
 
 						'#md_shootings_near_you[killed!=0]{marker-fill-opacity: 1;'+
 						'marker-line-color: #900020;'+
@@ -121,14 +122,14 @@ var app = {
 				.addTo(homicideMap)
 				.done(function(layer) {
 					mainlayers[0] = layer.getSubLayer(0);
-					mainlayers[0].setInteractivity('address, date, killed, injured');
+					mainlayers[0].setInteractivity('location, crimedate, killed, injured');
 					var shootingsTooltip = layer.leafletMap.viz.addOverlay({
 						type: 'infobox',
 						layer: mainlayers[0],
 						template:'<div class="shootingsInfobox">'+
-							'<p>{{address}}</p>'+
-							'<p>{{date}}</p>'+
-							'<p class="injuredCounty"># injured: <span>{{injured}}</span></p>'+
+							'<p>{{location}}</p>'+
+							'<p>{{crimedate}}</p>'+
+							'<p class="injuredCount"># injured: <span>{{injured}}</span></p>'+
 							'<p class="killedCount"># killed: <span>{{killed}}</span></p>'+
 							'</div>',
 						width: 208,
@@ -137,7 +138,7 @@ var app = {
 							date: 'date'
 						}]
 					});
-					$('.infobox--shootings').append(shootingsTooltip.render().el);
+					$('.infobox').append(shootingsTooltip.render().el);
 					var lat = 39.118985;
 					var lon = -76.375932;
 					var zoomLvl = 9;
@@ -221,6 +222,7 @@ var app = {
 			function clearMap() {
 				if ($('.overlay').length != 0) {
 					$('.overlay').fadeOut();
+					$('footer').fadeOut();
 				};
 				if (radius != undefined) {
 					homicideMap.removeLayer(radius);

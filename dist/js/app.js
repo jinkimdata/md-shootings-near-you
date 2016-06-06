@@ -8,15 +8,15 @@ var app = {
         var url = "http://data.baltimoresun.com/news/shootings-near-you";
         var shortUrl = "bsun.md/1saCzGK";
         var picture = "http://data.baltimoresun.com/jin/md-shootings-near-you/images/thumb.png";
-        var title = "Find shootigns near you";
+        var title = "Find shootings near you";
         $(".icon-twitter").on("click", function() {
-            var tweet = getSocialLang() + shortUrl;
+            var tweet = getSocialLang() + ", @baltsundata map shows. " + shortUrl;
             var twitter_url = "https://twitter.com/intent/tweet?text=" + tweet + "&url=" + shortUrl + "&tw_p=tweetbutton";
             window.open(twitter_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
         });
         $(".icon-facebook").on("click", function() {
-            var description = getSocialLang();
+            var description = getSocialLang() + ".";
             var facebook_url = "https://www.facebook.com/dialog/feed?display=popup&app_id=310302989040998&link=" + url + "&picture=" + picture + "&name=" + title + "&description=" + description + "&redirect_uri=http://www.facebook.com";
             window.open(facebook_url, "mywin", "left=200,top=200,width=500,height=300,toolbar=1,resizable=0");
             return false;
@@ -32,7 +32,7 @@ var app = {
             } else {
                 area = "in my area";
             }
-            return "Since 2015, " + stats[0] + " shootings " + area + " resulted in " + stats[2] + " injuries and " + stats[1] + " deaths, @baltsundata map shows. ";
+            return "Since 2015, " + stats[0] + " shootings " + area + " resulted in " + stats[2] + " injuries and " + stats[1] + " deaths";
         }
     },
     createMap: function() {
@@ -73,18 +73,18 @@ var app = {
                 cartodb_logo: false
             }).addTo(homicideMap).done(function(layer) {
                 mainlayers[0] = layer.getSubLayer(0);
-                mainlayers[0].setInteractivity("address, date, killed, injured");
+                mainlayers[0].setInteractivity("location, crimedate, killed, injured");
                 var shootingsTooltip = layer.leafletMap.viz.addOverlay({
                     type: "infobox",
                     layer: mainlayers[0],
-                    template: '<div class="shootingsInfobox">' + "<p>{{address}}</p>" + "<p>{{date}}</p>" + '<p class="injuredCounty"># injured: <span>{{injured}}</span></p>' + '<p class="killedCount"># killed: <span>{{killed}}</span></p>' + "</div>",
+                    template: '<div class="shootingsInfobox">' + "<p>{{location}}</p>" + "<p>{{crimedate}}</p>" + '<p class="injuredCount"># injured: <span>{{injured}}</span></p>' + '<p class="killedCount"># killed: <span>{{killed}}</span></p>' + "</div>",
                     width: 208,
                     fields: [ {
                         address: "address",
                         date: "date"
                     } ]
                 });
-                $(".infobox--shootings").append(shootingsTooltip.render().el);
+                $(".infobox").append(shootingsTooltip.render().el);
                 var lat = 39.118985;
                 var lon = -76.375932;
                 var zoomLvl = 9;
@@ -171,6 +171,7 @@ var app = {
             function clearMap() {
                 if ($(".overlay").length != 0) {
                     $(".overlay").fadeOut();
+                    $("footer").fadeOut();
                 }
                 if (radius != undefined) {
                     homicideMap.removeLayer(radius);
